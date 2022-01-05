@@ -5,11 +5,108 @@
     <parent>
         <artifactId>rapid-gateway</artifactId>
         <groupId>com.chaytech.rapid</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>rapid-gateway-console</artifactId>
 
+    <properties>
+        <rapid-commonn.version>1.0.0</rapid-commonn.version>
+        <rapid-discovery-api.version>1.0.0</rapid-discovery-api.version>
+        <rapid-discovery-etcd.version>1.0.0</rapid-discovery-etcd.version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.chaytech.rapid</groupId>
+            <artifactId>rapid-gateway-common</artifactId>
+            <version>${rapid-commonn.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!-- 日志 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-jcl</artifactId>
+        </dependency>
+
+        <!--可选的依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.1.7.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>2.0.4.RELEASE</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- 注册中心 -->
+        <dependency>
+            <groupId>com.chaytech.rapid</groupId>
+            <artifactId>rapid-gateway-discovery-api</artifactId>
+            <version>${rapid-discovery-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.chaytech.rapid</groupId>
+            <artifactId>rapid-gateway-discovery-etcd</artifactId>
+            <version>${rapid-discovery-etcd.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.chaytech.rapid.console.Application</mainClass>
+                    <addResources>true</addResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

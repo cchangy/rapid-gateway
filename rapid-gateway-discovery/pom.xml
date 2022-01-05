@@ -5,13 +5,33 @@
     <parent>
         <artifactId>rapid-gateway</artifactId>
         <groupId>com.chaytech.rapid</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>rapid-gateway-discovery</artifactId>
     <packaging>pom</packaging>
 
+    <properties>
+        <rapid-commonn.version>1.0.0</rapid-commonn.version>
+        <jetcd-core.version>0.5.4</jetcd-core.version>
+        <lombok.version>1.18.0</lombok.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.chaytech.rapid</groupId>
+                <artifactId>rapid-gateway-common</artifactId>
+                <version>${rapid-commonn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.etcd</groupId>
+                <artifactId>jetcd-core</artifactId>
+                <version>${jetcd-core.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
         <module>rapid-gateway-discovery-api</module>
