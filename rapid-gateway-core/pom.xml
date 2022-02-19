@@ -130,7 +130,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.chaytech.rapid.core.Bootstrap</mainClass>
+                            <mainClass>com.chaytech.rapid.core.RapidBootstrap</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
